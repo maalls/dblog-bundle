@@ -1,0 +1,39 @@
+{% extends 'MaallsAdminBundle::templates/table.html.twig' %}
+
+{% block pageTitle %}Logs{% endblock %}
+{% block header %}{% endblock %}
+{% block breadcrumb %}
+
+    <li class="active">
+        <a href="{{ path('maalls_db_logs') }}">Logs</a>
+    </li>
+
+{% endblock %}
+
+{% block table %}
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date <small>(timezone UTC)</small></th>
+            <th>Level</th>
+            <th>Message</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for log in pager %}
+            <tr class="gradeA {{ cycle(['odd', 'even'], loop.index) }}" role="row">
+
+                <td>{{log.id}}</td>
+                <td>{{log.createdAt.format('Y-m-d H:i:s')}} <small class="text-muted"><i>{{log.createdAt | ago }}</i></small></td>
+                <td><span class="label label-{{log.priority == 'error' ? 'danger' : log.priority }}">{{log.priority}}</span></td>
+                <td>{{log.message}}</td>
+                <td>{{log.author}}</td>
+            </tr>
+        {% endfor %}
+
+
+
+{% endblock %}

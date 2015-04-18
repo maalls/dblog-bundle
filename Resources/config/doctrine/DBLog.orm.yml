@@ -1,0 +1,25 @@
+Maalls\DBLogBundle\Entity\DBLog:
+    type: entity
+    table: log
+    repositoryClass: Maalls\DBLogBundle\Repository\DBLogRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        priority:
+            type: string
+            length: 16
+        message:
+            type: text
+        created_at:
+            type: datetime
+        author:
+            type: string
+            length: 32
+
+    lifecycleCallbacks:
+        prePersist: [setCreatedAtValue]
+    indexes:
+        dblog_created_at_index:
+            columns: [ created_at ]

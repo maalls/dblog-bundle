@@ -1,0 +1,3 @@
+maalls_db_logs:
+    path: /log 
+    defaults: { _controller: MaallsDBLogBundle:Default:index }

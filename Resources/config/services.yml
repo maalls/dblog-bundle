@@ -1,0 +1,18 @@
+services:
+#    maalls_db_log.example:
+#        class: Maalls\DBLogBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    maalls.dblogger:
+        class: Maalls\DBLogBundle\Lib\Logger
+        arguments: ["@doctrine.orm.dblog_entity_manager", "system"]
+
+    maalls.dblog.purger:
+        class: Maalls\DBLogBundle\Lib\Purger
+        arguments: ["@doctrine.orm.dblog_entity_manager", "%maalls.dblog.purge.limit%"]
+
+    timeago.twig_extension:
+        class: Maalls\DBLogBundle\Twig\TimeagoExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+        

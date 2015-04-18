@@ -1,0 +1,27 @@
+{
+    "name": "maalls/dblog-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Malo Yamakado",
+            "email": "maalls@gmail.com"
+        }
+    ],
+    "repositories": [
+       {
+            "type": "vcs",
+            "url":  "https://github.com/maalls/AdminBundle"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "~2.6",
+        "maalls/pager": "~1.0",
+        "maalls/admin-bundle": "~1.0",
+        "doctrine/orm": "~2.2,>=2.2.3,<2.5"
+    },
+    "autoload": {
+        "psr-4": { "Maalls\\DBLogBundle\\": "" }
+    }
+    
+}
